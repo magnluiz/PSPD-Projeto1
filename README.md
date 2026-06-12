@@ -1,4 +1,3 @@
----
 
 ## Épico 1 — Tipos de comunicação gRPC ✅
 
