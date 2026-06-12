@@ -1,0 +1,49 @@
+version: "3.9"
+
+services:
+
+  service-a:
+    build: 
+      context: . 
+      dockerfile: service-a/Dockerfile
+    image: pspd/service-a:latest
+    container_name: service-a
+    ports:
+      - "50051:50051"
+    networks:
+      - pspd-net
+    restart: unless-stopped
+
+  service-b:
+    build: 
+      context: .
+      dockerfile: service-b/Dockerfile
+    image: pspd/service-b:latest
+    container_name: service-b
+    ports:
+      - "50052:50052"
+    networks:
+      - pspd-net
+    restart: unless-stopped
+
+  gateway:
+    build: 
+      context: .
+      dockerfile: gateway/Dockerfile
+    image: pspd/gateway:latest
+    container_name: gateway
+    ports:
+      - "8080:8080"
+    environment:
+      - SERVICE_A_ADDR=service-a:50051
+      - SERVICE_B_ADDR=service-b:50052
+    depends_on:
+      - service-a
+      - service-b
+    networks:
+      - pspd-net
+    restart: unless-stopped
+
+networks:
+  pspd-net:
+    driver: bridge

@@ -7,7 +7,7 @@ import (
 	"log"
 	"net/http"
 	"strconv"
-
+	"os"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 
@@ -20,13 +20,17 @@ var (
 )
 
 func initClients() {
-	connA, err := grpc.NewClient("localhost:50051", grpc.WithTransportCredentials(insecure.NewCredentials()))
+	serviceAAddr := os.Getenv("SERVICE_A_ADDR")
+	if serviceAAddr == "" {serviceAAddr = "localhost:50051"}
+	connA, err := grpc.NewClient(serviceAAddr, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Fatalf("failed to connect to service-a: %v", err)
 	}
 	basicClient = calc.NewBasicServiceClient(connA)
 
-	connB, err := grpc.NewClient("localhost:50052", grpc.WithTransportCredentials(insecure.NewCredentials()))
+	serviceBAddr := os.Getenv("SERVICE_B_ADDR")
+	if serviceBAddr == "" {serviceBAddr = "localhost:50052"}
+	connB, err := grpc.NewClient(serviceBAddr, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Fatalf("failed to connect to service-b: %v", err)
 	}
