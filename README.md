@@ -129,6 +129,14 @@ docker compose up --build
 curl "http://localhost:8080/sqrt?a=81"
 ```
 
+### Parar o cluster
+
+```bash
+./stop.sh
+```
+
+`stop.sh` remove os workloads via `kubectl delete` antes de parar o Minikube, garantindo shutdown ordenado dos pods.
+
 ---
 
 ## Épico 4 — Relatório e entrega final ⏳
