@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package calc;
+
+option go_package = "./calc_grpc";
+
+// Service A — basic operations (Python, port 50051)
+service BasicService {
+  rpc Add      (BinaryRequest) returns (CalcReply);
+  rpc Subtract (BinaryRequest) returns (CalcReply);
+  rpc Multiply (BinaryRequest) returns (CalcReply);
+  rpc Divide   (BinaryRequest) returns (CalcReply);
+}
+
+// Service B — advanced operations (Node.js, port 50052)
+service AdvancedService {
+  rpc Power      (BinaryRequest) returns (CalcReply);
+  rpc SquareRoot (UnaryRequest)  returns (CalcReply);
+  rpc Factorial  (UnaryRequest)  returns (CalcReply);
+  rpc Log        (BinaryRequest) returns (CalcReply);
+}
+
+// Two operands: e.g. 4 + 2, 3 ^ 5, log(100, 10)
+message BinaryRequest {
+  double a = 1;
+  double b = 2;
+}
+
+// One operand: e.g. sqrt(9), 5!
+message UnaryRequest {
+  double a = 1;
+}
+
+// Standard reply for all operations
+message CalcReply {
+  double result = 1;
+  string error  = 2;
+}
