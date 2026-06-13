@@ -139,9 +139,24 @@ curl "http://localhost:8080/sqrt?a=81"
 
 ---
 
-## Épico 4 — Relatório e entrega final ⏳
+## Épico 4 — Relatório e entrega final ✅
 
-A ser iniciado.
+Este épico consolida a entrega do experimento, documentando as decisões arquiteturais, os resultados dos benchmarks e a experiência prática da equipe com a implementação de chamadas RPC e orquestração de microserviços. 
+
+Todo o código-fonte, scripts de automação e manifestos do Kubernetes estão versionados neste repositório, refletindo a jornada de aprendizado do Épico 1 ao 3.
+
+### Autoavaliações da Equipe
+
+Abaixo estão os relatos e avaliações individuais dos integrantes sobre o envolvimento no projeto:
+
+**Daniel Coimbra dos Santos – 180113097**
+> "Tive uma participação central e de liderança em praticamente todas as frentes do desenvolvimento. Fui o principal responsável por estruturar a aplicação distribuída, configurar o contrato `.proto` compartilhado e implementar o ambiente de testes para realizar o comparativo de latência entre gRPC e o gateway REST. Além disso, atuei ativamente na integração dos três módulos e no suporte aos demais integrantes para solucionar erros de tempo de execução e ajustar os manifestos do Kubernetes. A experiência prática foi fundamental para consolidar conceitos de sistemas distribuídos de forma robusta. Avalio meu grau de envolvimento com a atividade como excelente, com nota 10/10."
+
+**Arthur Augusto Rezende da Paixão – 211031600**
+> "Participei ativamente de etapas importantes do experimento, concentrando meus esforços no estudo inicial do gRPC e na implementação dos fluxos de comunicação suportados no Épico 1. Também colaborei no desenvolvimento dos serviços em Python e Node.js e acompanhei o Daniel na configuração final da infraestrutura em Kubernetes. Perceber na prática como conceitos como serialização binária com Protocol Buffers funcionam me trouxe um grande aprendizado, embora eu reconheça que o ritmo de execução e a resolução dos problemas mais complexos tenham sido liderados majoritariamente pelo Daniel. Considero meu grau de envolvimento com a atividade alto, e avalio minha participação com nota 8/10."
+
+**Magno Luiz Vale Vieira – 180042696**
+> "Minha contribuição no projeto acabou sendo mais limitada e focada em tarefas auxiliares no início do desenvolvimento. Colaborei no levantamento de dependências do ambiente (como a instalação do Docker e do protoc) e acompanhei a montagem inicial dos scripts de deploy, mas não consegui atuar diretamente na codificação principal dos microserviços ou na arquitetura do cluster Kubernetes no mesmo ritmo que o restante do grupo. Apesar de o meu envolvimento ter sido menor do que o planejado, a atividade me permitiu entender melhor o fluxo teórico de uma aplicação baseada em microserviços. Avalio meu grau de envolvimento com a atividade como regular, com nota 5/10."
 
 ---
 
